@@ -68,10 +68,17 @@ Level 5 = 五等奖 (Fifth Prize)      ← Lowest/Worst
 
 Users have `minLevel` and `maxLevel` constraints:
 
-- `minLevel=n`: Can win n OR BETTER → `prizeLevel <= n`
-- `maxLevel=n`: Can win n OR WORSE → `prizeLevel >= n`
+- `minLevel=n`: Can win n OR BETTER → `prizeLevel <= n` (至少中 n 等奖)
+- `maxLevel=n`: Can win n OR WORSE → `prizeLevel >= n` (最多中 n 等奖)
+
+**Valid combinations** (可中奖 = 两个约束的交集):
+- `minLevel=null, maxLevel=null`: 无限制，可中所有奖项
+- `minLevel=3, maxLevel=2`: 可中奖 {2,3} = 二等奖、三等奖 ✓
+- `minLevel=4, maxLevel=2`: 可中奖 {2,3,4} = 二等、三等、四等奖 ✓
+- `minLevel=2, maxLevel=2`: 可中奖 {2} = 只能二等奖 ✓
 
 **Invalid configuration**: `minLevel < maxLevel` creates empty intersection (throws Error).
+- `minLevel=0, maxLevel=1`: 要求 prizeLevel <= 0 且 >= 1，无解 ❌
 
 See `docs/level-combinations.md` for all 49 possible combinations.
 

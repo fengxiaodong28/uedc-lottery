@@ -221,12 +221,21 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 1rem;
+  min-height: 0;
+  overflow: hidden;
 }
 
 .ending-content {
   text-align: center;
   animation: endingFadeIn 0.8s ease-out;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 0.8rem;
 }
 
 @keyframes endingFadeIn {
@@ -241,17 +250,17 @@ onUnmounted(() => {
 }
 
 .ending-title {
-  margin-bottom: 3rem;
+  margin-bottom: 0;
 }
 
 .title-main {
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   font-weight: 800;
   background: linear-gradient(135deg, #ffd700 0%, #f5a623 30%, #f76b1c 70%, #ff6b35 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.3rem;
   animation: titleGlow 2s ease-in-out infinite alternate;
 }
 
@@ -265,7 +274,7 @@ onUnmounted(() => {
 }
 
 .title-sub {
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.6);
   font-weight: 500;
 }
@@ -274,26 +283,28 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
-  margin-bottom: 3rem;
-  padding: 1.5rem 2.5rem;
+  gap: 1rem;
+  margin-bottom: 0;
+  padding: 0.6rem 1.2rem;
   background: rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
+  border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  flex-wrap: nowrap;
 }
 
 .stat-item {
   text-align: center;
+  min-width: 60px;
 }
 
 .stat-label {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.2rem;
 }
 
 .stat-value {
-  font-size: 2rem;
+  font-size: 1.4rem;
   font-weight: 700;
   background: linear-gradient(135deg, #ffd700 0%, #f5a623 100%);
   -webkit-background-clip: text;
@@ -310,7 +321,7 @@ onUnmounted(() => {
 
 .stat-divider {
   width: 1px;
-  height: 50px;
+  height: 30px;
   background: rgba(255, 255, 255, 0.15);
 }
 
@@ -323,24 +334,24 @@ onUnmounted(() => {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-5px);
   }
 }
 
 .message-icon {
-  font-size: 4rem;
-  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  margin-bottom: 0.3rem;
 }
 
 .message-text {
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: #fff;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.2rem;
 }
 
 .message-sub {
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.5);
 }
 
@@ -378,14 +389,14 @@ onUnmounted(() => {
 }
 
 .empty-text {
-  font-size: 1.3rem;
+  font-size: 1.8rem;
   color: rgba(255, 255, 255, 0.5);
   font-weight: 600;
   margin-bottom: 0.5rem;
 }
 
 .empty-subtext {
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.3);
   font-weight: 400;
 }
@@ -416,7 +427,7 @@ onUnmounted(() => {
 }
 
 .progress-text {
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.6);
   font-weight: 500;
 }
@@ -468,7 +479,7 @@ onUnmounted(() => {
 }
 
 .winner-name {
-  font-size: 1.1rem;
+  font-size: 1.6rem;
   font-weight: 600;
   color: #fff;
   padding: 0.5rem 1.2rem;
@@ -515,11 +526,11 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  padding: 0.8rem 2rem;
+  padding: 1rem 2.5rem;
   background: linear-gradient(135deg, rgba(245, 166, 35, 0.95) 0%, rgba(247, 107, 28, 0.95) 100%);
   color: #1a1a2e;
   border-radius: 50px;
-  font-size: 1rem;
+  font-size: 1.3rem;
   font-weight: 600;
   box-shadow: 0 6px 25px rgba(245, 166, 35, 0.4);
   animation: pulse 2s ease-in-out infinite;
@@ -552,17 +563,45 @@ onUnmounted(() => {
 
 /* ========== 响应式 ========== */
 @media (max-width: 768px) {
+  .ending-screen {
+    padding: 0.5rem;
+  }
+
   .ending-title .title-main {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
+  }
+
+  .title-sub {
+    font-size: 0.8rem;
   }
 
   .ending-stats {
-    gap: 1rem;
-    padding: 1rem 1.5rem;
+    gap: 0.5rem;
+    padding: 0.5rem 0.8rem;
+  }
+
+  .stat-divider {
+    height: 25px;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
   }
 
   .stat-value {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
+  }
+
+  .message-icon {
+    font-size: 2rem;
+  }
+
+  .message-text {
+    font-size: 1rem;
+  }
+
+  .message-sub {
+    font-size: 0.8rem;
   }
 
   .prize-title {
@@ -570,13 +609,25 @@ onUnmounted(() => {
   }
 
   .winner-name {
-    font-size: 1rem;
+    font-size: 1.3rem;
     padding: 0.4rem 1rem;
   }
 
   .hint-text {
-    padding: 0.6rem 1.5rem;
-    font-size: 0.9rem;
+    padding: 0.8rem 1.8rem;
+    font-size: 1.1rem;
+  }
+
+  .empty-text {
+    font-size: 1.4rem;
+  }
+
+  .empty-subtext {
+    font-size: 1rem;
+  }
+
+  .progress-text {
+    font-size: 1rem;
   }
 
   .progress-bar {

@@ -82,7 +82,7 @@ async function handleExport() {
 }
 
 .prize-label {
-  font-size: 0.75rem;
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.5);
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -95,7 +95,7 @@ async function handleExport() {
 }
 
 .prize-name {
-  font-size: 1.3rem;
+  font-size: 1.8rem;
   font-weight: 700;
   background: linear-gradient(135deg, #ffd700 0%, #f5a623 50%, #f76b1c 100%);
   -webkit-background-clip: text;
@@ -109,22 +109,31 @@ async function handleExport() {
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .button-group {
   display: flex;
   gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .complete-text {
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   color: rgba(255, 255, 255, 0.8);
   font-weight: 600;
 }
 
 @media (max-width: 768px) {
+  .prize-label {
+    font-size: 0.9rem;
+  }
   .prize-name {
-    font-size: 1.1rem;
+    font-size: 1.4rem;
+  }
+  .complete-text {
+    font-size: 1.2rem;
   }
 }
 </style>

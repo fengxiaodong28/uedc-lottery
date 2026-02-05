@@ -69,17 +69,33 @@ function handleDraw() {
   const drawCount = Math.min(round.remaining, eligible.length);
 
   // 计算剩余轮次（用于智能抽取算法）
-  const remainingRounds = DRAW_ROUNDS.length - drawStore.completedRounds - 1;
+  const currentRoundIndex = drawStore.completedRounds;
+  const futureRounds = DRAW_ROUNDS.slice(currentRoundIndex + 1).map(r => ({
+    level: r.level,
+    count: r.remaining,
+  }));
 
-  // 使用智能分层抽取算法
-  // 这会优先保证有限制用户在他们能参与的轮次中有机会中奖
-  const { winners, stats } = smartDraw(eligible, drawCount, remainingRounds);
+  // 获取所有未中奖的用户（用于预测未来需求）
+  const allUnclaimedUsers = userStore.users.filter(u => !u.isWinner);
+
+  // 使用智能分层抽取算法（双向保护版本）
+  // - 保护有限制用户：在他们能参与的轮次中优先抽取
+  // - 保护无限制用户：为未来高等级轮次预留足够的无限制用户
+  const { winners, stats } = smartDraw(
+    eligible,
+    drawCount,
+    allUnclaimedUsers,
+    level,
+    futureRounds
+  );
 
   console.log(`[智能抽取] 第${drawStore.completedRounds + 1}轮 ${round.name}:`, {
     需要抽取: drawCount,
     符合条件: stats.totalEligible,
     无限制用户: stats.unrestrictedCount,
     有限制用户: stats.restrictedCount,
+    为未来预留: stats.reservedForFuture,
+    最后机会保护: stats.lastChanceDrawn,
     实际抽取: {
       无限制: stats.unrestrictedDrawn,
       有限制: stats.restrictedDrawn,

@@ -173,6 +173,10 @@ function getConfettiEmoji(index: number): string {
   overflow: hidden;
 }
 
+.app * {
+  box-sizing: border-box;
+}
+
 .bg-gradient {
   position: fixed;
   top: 0;
@@ -188,7 +192,7 @@ function getConfettiEmoji(index: number): string {
 }
 
 .app-header {
-  padding: 1.5rem 2rem 1rem;
+  padding: 1rem 1.5rem 0.5rem;
   text-align: center;
   position: relative;
   z-index: 1;
@@ -197,7 +201,7 @@ function getConfettiEmoji(index: number): string {
 
 .title {
   margin: 0;
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 800;
   background: linear-gradient(135deg, #ffd700 0%, #f5a623 30%, #f76b1c 70%, #ff6b35 100%);
   -webkit-background-clip: text;
@@ -266,7 +270,7 @@ function getConfettiEmoji(index: number): string {
   }
 
   .title {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 
   .app-main {
